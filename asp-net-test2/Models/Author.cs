@@ -1,5 +1,5 @@
 
-namespace asp_net_test2.Models
+namespace Authorship.Models
 {
   public class Author(string Name)
   {

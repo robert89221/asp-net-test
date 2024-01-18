@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "asp-net-test2", "asp-net-test2\asp-net-test2.csproj", "{65B8A5E4-F75A-4734-A601-669B7E2FBE21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorship", "asp-net-test2\Authorship.csproj", "{65B8A5E4-F75A-4734-A601-669B7E2FBE21}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{22DE92DB-9E3F-481C-B3DB-FACCF89A9E82}"
 	ProjectSection(SolutionItems) = preProject

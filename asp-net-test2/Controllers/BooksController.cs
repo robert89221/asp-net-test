@@ -1,9 +1,9 @@
 
-using asp_net_test2.Models;
+using Authorship.Models;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace asp_net_test2.Controllers
+namespace Authorship.Controllers
 {
   [ApiController]
   [Route("api/books")]
