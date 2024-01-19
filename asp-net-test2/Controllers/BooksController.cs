@@ -24,22 +24,25 @@ namespace Authorship.Controllers
       new Book(2012, "Äventyret"),
     };
 
-    [HttpGet("{id}")]
-    public IActionResult GetBooks(string id)
+    //  GET /api/books
+    [HttpGet]
+    public IActionResult GetAllBooks()
     {
-      if (id.ToLower() == "all")
-      {
-        return Ok(Books.ToList());
-      }
-      else if (Int32.TryParse(id, out int n))
-      {
-        if (0 <= n && n <= 2)
-        {
-          return Ok(Books[n]);
-        }
-      }
+      return Ok(Books.ToList());
+    }
 
-      return BadRequest("Bad book ID");
+    // GET /api/books/id
+    [HttpGet ("{id}")]
+    public IActionResult GetBook(int id)
+    {
+      if (1 <= id && id <= 3)
+      {
+        return Ok(Books[id-1]);
+      }
+      else
+      {
+        return BadRequest("Bad book ID");
+      }
     }
 
   }
