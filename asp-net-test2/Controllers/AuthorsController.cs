@@ -17,7 +17,7 @@ namespace Authorship.Controllers
       }
     */
 
-    private readonly Author[] Authors =
+    static private List<Author> Authors = new()
     {
       new Author("Jan Guillou"),
       new Author("Boke Skrivarsson"),
@@ -28,16 +28,39 @@ namespace Authorship.Controllers
     [HttpGet]
     public IActionResult GetAllAuthors()
     {
-      return Ok(Authors.ToList());
+      return Ok(Authors);
     }
 
     // GET /api/authors/id
     [HttpGet ("{id}")]
     public IActionResult GetAuthor(int id)
     {
-      if (1 <= id && id <= 3)
+      if (1 <= id && id <= Authors.Count)
       {
-        return Ok(Authors[id-1]);
+        return Ok(Authors[id - 1]);
+      }
+      else
+      {
+        return BadRequest("Bad author ID");
+      }
+    }
+
+    //  POST /api/authors
+    [HttpPost]
+    public IActionResult PostAuthor([FromBody] Author author)
+    {
+      Authors.Add(author);
+      return Ok(Authors.Last());
+    }
+
+    //  DELETE /api/authors/id
+    [HttpDelete ("{id}")]
+    public IActionResult DeleteAuthor(int id)
+    {
+      if (1 <= id && id <= Authors.Count)
+      {
+        Authors.RemoveAt(id - 1);
+        return Ok();
       }
       else
       {

@@ -17,7 +17,7 @@ namespace Authorship.Controllers
       }
     */
 
-    private readonly Book[] Books =
+    static private List<Book> Books = new()
     {
       new Book(1980, "Ondskan"),
       new Book(2010, "Boken"),
@@ -28,22 +28,46 @@ namespace Authorship.Controllers
     [HttpGet]
     public IActionResult GetAllBooks()
     {
-      return Ok(Books.ToList());
+      return Ok(Books);
     }
 
     // GET /api/books/id
     [HttpGet ("{id}")]
     public IActionResult GetBook(int id)
     {
-      if (1 <= id && id <= 3)
+      if (1 <= id && id <= Books.Count)
       {
-        return Ok(Books[id-1]);
+        return Ok(Books[id - 1]);
       }
       else
       {
         return BadRequest("Bad book ID");
       }
     }
+
+    //  POST /api/books
+    [HttpPost]
+    public IActionResult PostBook([FromBody]Book book)
+    {
+      Books.Add(book);
+      return Ok(Books.Last());
+    }
+
+    //  DELETE /api/books/id
+    [HttpDelete ("{id}")]
+    public IActionResult DeleteBook(int id)
+    {
+      if (1 <= id && id <= Books.Count)
+      {
+        Books.RemoveAt(id - 1);
+        return Ok();
+      }
+      else
+      {
+        return BadRequest("Bad book ID");
+      }
+    }
+
 
   }
 }
